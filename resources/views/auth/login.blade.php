@@ -26,7 +26,7 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="inpit-form-content">
-                                <input class="form-control form-input p-2 mb-3" value="{{ old('email') }}" type="text" name="email" placeholder="Enter email here..." required autocomplete="email" autofocus>
+                                <input class="form-control form-input p-2 mb-3" value="{{ old('email') }}" type="text" name="email" placeholder="Enter email " required autocomplete="email" autofocus>
 
                                 <div class="svg-content">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="12" viewBox="0 0 15 12" fill="none">
@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="inpit-form-content">
-                                <input class="form-control form-input p-2 mb-3" type="password" name="password" placeholder="Enter password here..." required autocomplete="current-password">
+                                <input class="form-control form-input p-2 mb-3" type="password" name="password" placeholder="Enter password " required autocomplete="current-password">
 
                                 @error('email')
                                 <p class="error-text">Invalid Credentials</p>

@@ -27,9 +27,9 @@
                         <form action="{{ route('register') }}" method="POST">
                             @csrf
                             <div class="inpit-form-content">
-                                <!-- <input class="form-control form-input p-2 mb-3" type="text" name="name" placeholder="Enter name here..." value="{{ old('name') }}" required autocomplete="name" autofocus> -->
+                                <!-- <input class="form-control form-input p-2 mb-3" type="text" name="name" placeholder="Enter name " value="{{ old('name') }}" required autocomplete="name" autofocus> -->
 
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror form-input p-2 mb-3" name="name" value="{{ old('name') }}" placeholder="Enter name here..." required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror form-input p-2 mb-3" name="name" value="{{ old('name') }}" placeholder="Enter name " required autocomplete="name" autofocus>
 
                                 @error('name')
                                 <p class="error-text"> {{ $message }} </p>
@@ -38,13 +38,13 @@
                             </div>
                             <div class="inpit-form-content">
 
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror form-input p-2 mb-3" name="email" placeholder="Enter email here..." value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror form-input p-2 mb-3" name="email" placeholder="Enter email " value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                 <p class="error-text"> {{ $message }} </p>
                                 @enderror
 
-                                <!-- <input class="form-control form-input p-2 mb-3" type="text" name="email" placeholder="Enter email here..." value="{{ old('email') }}" required autocomplete="email">
+                                <!-- <input class="form-control form-input p-2 mb-3" type="text" name="email" placeholder="Enter email " value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                 <p class="error-text">Please enter name</p>
@@ -65,14 +65,14 @@
                             </div>
                             <div class="inpit-form-content">
 
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror form-input p-2 mb-3" name="password" required autocomplete="new-password" placeholder="Enter password here...">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror form-input p-2 mb-3" name="password" required autocomplete="new-password" placeholder="Enter password ">
 
                                 @error('password')
                                 <p class="error-text"> {{ $message }} </p>
                                 @enderror
 
                                 <!-- <input class="form-control form-input p-2 mb-3" type="password" name="password"
-                                    placeholder="Enter password here..." required autocomplete="new-password">
+                                    placeholder="Enter password " required autocomplete="new-password">
 
                                 @error('password')
                                 <p class="error-text">Please enter name</p>

@@ -89,7 +89,12 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-                    <li><a class="dropdown-item" href="#">logout</a></li>
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button class="dropdown-item">logout</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -391,7 +396,6 @@
             const timeBlocks = generateTimeBlocks(2);
 
             return ` <div class="row timeRow">
-                                <div class="col-md-3"></div>
                                 <div class="col-md-9">
                                     <div class="d-flex justify-content-between">
                                         <div class="text-gray-14">${timeBlocks[0]}</div>
@@ -406,15 +410,45 @@
 
         function giveChannelRow(imagePath, elements){
 
+            const randomNumber = generateRandomNumber();
+            console.log(randomNumber);
+
             return `<div class="channelRow row mt-3">
                 <div class="col-md-3 row-padding-imp">
                     <div style="gap:3px" class="d-flex fix-img-text-content">
-                    <div style="width: 25%;" class="d-flex align-items-center bg-black text-gray-14 p-3">001</div>
-                    <div class="d-flex justify-content-center align-items-center"><img class='height-100 channel-logo' src=${imagePath}></div>
-                    ${elements}
+                    <div class="static-div d-flex">
+                        <div style="width: 25%;" class="d-flex align-items-center bg-black text-gray-14 p-3">001</div>
+                        <p class="large-arrow left-arrow" onclick="leftSlide('scroll${randomNumber}')" >←</p>
+                        <div id="logoImageContainer" class="d-flex justify-content-center align-items-center">
+                            <img class='height-100 channel-logo' src=${imagePath}>
+                        </div>
+                        <p class="large-arrow right-arrow"  onclick="rightSlide('scroll${randomNumber}')">→</p>
+                    </div>
+                    <div id="scroll${randomNumber}" class="d-flex scrollable_parent">
+                        ${elements}
+                    </div>
                     </div>
                 </div>
             </div>`;
+        }
+
+        function generateRandomNumber() {
+            const min = 1000000000; // Minimum 10-digit number
+            const max = 9999999999; // Maximum 10-digit number
+            const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+            return randomNum;
+        }
+
+
+        function leftSlide(elementId){
+            const element = document.getElementById(elementId);
+            if(element.style.left == "0px") return;
+            element.style.left = parseInt(element.style.left || 0) + 200 + 'px';
+        }
+
+        function rightSlide(elementId) {
+            const element = document.getElementById(elementId);
+            element.style.left = parseInt(element.style.left || 0) - 200 + 'px'; // Adjust the left value as needed
         }
 
         function parseTimeRange(start, stop) {
@@ -643,6 +677,8 @@
         setChannels(currentGenre);
 
         document.addEventListener("DOMContentLoaded", function () {
+
+
             const playButton = document.querySelector(".vjs-big-play-button");
             playButton.style.position = "absolute";
             playButton.style.top = "50%";

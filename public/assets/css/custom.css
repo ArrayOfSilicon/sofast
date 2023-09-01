@@ -59,6 +59,12 @@ body {
     overflow-x: hidden;
 }
 
+.scrollable_parent{
+    position: relative;
+    left: 0; /* Initial position */
+    transition: left 0.5s ease;
+}
+
 /* Grayscale effect (black and white) */
 .imageParent img, .channel-logo {
     filter: grayscale(100%);
@@ -122,7 +128,11 @@ input[type="checkbox"] {
     font-style: normal;
     font-weight: 500;
     line-height: 30px;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
+}
+
+.error-text{
+    color: red;
 }
 
 .form-input {
@@ -135,7 +145,7 @@ input[type="checkbox"] {
     font-style: normal;
     font-weight: 400;
     line-height: 21px;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 .form-input:focus {
@@ -380,4 +390,32 @@ input[type="checkbox"] {
     border-color: transparent transparent red transparent;
   }
 
+ .logoImageContainer{
+    position: relative;
+ }
 
+ .scroll-button-left{
+    position: absolute;
+    left: 0;
+ }
+
+.scroll-button-right{
+    position: absolute;
+    right: 0;
+}
+
+.large-arrow{
+    font-size: 40px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 4px;
+    padding-right: 4px;
+    cursor: pointer;
+}
+
+.static-div{
+    z-index: 9999;
+    background: #171A1f !important;
+}
