@@ -23,7 +23,7 @@
                         <div class="logo-image text-center mt-3">
                             <img src="{{ asset('assets/images/sofast-white-background 1.png') }}">
                         </div>
-                        <div class="text-start mt-5 mb-3 title-text">Sign Up</div>
+                        <div class="text-start mt-5 mb-3 title-text">Profile</div>
                         <form action="{{ route('profileEdit') }}" method="POST">
                             @csrf
                             <div class="inpit-form-content">

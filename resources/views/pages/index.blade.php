@@ -105,7 +105,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div>
-                    <video-js id="my-video" class="vjs-default-skin" controls preload="auto" width="1280" height="720" autoplay muted>
+                    <video-js id="my-video" class="vjs-default-skin " controls preload="auto" width="1280" height="720" autoplay muted>
                         <source id="video-src"  type="application/x-mpegURL">
                     </video-js>
                 </div>
@@ -684,8 +684,32 @@
             playButton.style.left = "50%";
             playButton.style.transform = "translate(-50%, -50%)";
         });
+        $(document).ready(function(){
+            $('.vjs-play-control').addClass('vjs-playing');
 
+        });
+        $('.vjs-play-control').click(function(){
+            $(this).toggleClass('vjs-playing');
+        });
+        $('.vjs-tech').click(function(){
+            $('.vjs-play-control').toggleClass('vjs-playing');
+        });
     </script>
+     <script>
+    const verticalLine = $('.vertical-line');
+    let marginRightValue = 88; // Initial margin-right value in pixels
+
+    // Function to move the vertical line by updating margin-right
+    function moveLine() {
+        marginRightValue += 1;
+        verticalLine.css('margin-left', marginRightValue + 'px');
+        verticalLine.css('background', 'red');
+    }
+
+    // Call moveLine every second (1000 milliseconds)
+    const intervalId = setInterval(moveLine, 1000);
+</script>
+
 </body>
 
 </html>
