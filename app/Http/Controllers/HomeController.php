@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,22 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $user = auth()->user();
+        //gayatree new code google sprreadsheetapi
+    //     $spreadsheetId='1nSsuNxLmm0BT3TRgpsJ9EE_yCQMIKmjVFviUhQB0cuc';
+    //     $url ='https://sheets.googleapis.com/v4/spreadsheets/'.$spreadsheetId.'/values/Sheet1?key=AIzaSyBYIbRRq_lC2vzPwl1xA_s7-S5VdnPigwM';
+    //    $response =  Http::get($url);
+    //    if ($response->successful()) {
+    //     $data = $response->json();
+    //     $genreWiseData = $data['values'];
 
+    //     // Now you can work with the $data variable, which contains the response data.
+    //     return view('pages.index', ['data' => $genreWiseData]);
+    // } else {
+    //     // Handle the case where the request was not successful (e.g., an error occurred).
+    //     // dd($response->status(), $response->body());
+    //     return view('pages.index', ['data' => $response->body()]);
+    // }
         $data = [
             [
                 "CHANNEL NAME" => "4K TRAVEL TV",
@@ -162,7 +178,8 @@ class HomeController extends Controller
             $genreWiseData[$genre][] = $channel;
         }
 
-        return view('pages.index', ['data' => $genreWiseData]);
+        return view('pages.index', ['data' => $genreWiseData],compact('user'));
+        // return view('pages.index', compact('genreWiseData', 'user'));
 
     //     $response =
     //    Http::get('https://sheetdb.io/api/v1/7d6zu755q2vk1', [
@@ -194,4 +211,30 @@ class HomeController extends Controller
 
 
     }
+
+    public function profile()
+    {
+        $user = auth()->user();
+        // dd($user);
+        return view('pages.profile',compact('user'));
+    }
+
+    // public function profileEdit(Request $request)
+    // {
+
+    // }
+
+    public function profileEdit(Request $request)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(),
+        'password' => 'nullable|string|min:8|confirmed',
+    ]);
+    $user = Auth::user();
+    $user->name = $request->input('name');
+    $user->email = $request->input('email');
+    $user->save();
+    return redirect()->route('profile')->with('success', 'Profile updated successfully');
+}
 }

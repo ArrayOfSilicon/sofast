@@ -21,6 +21,9 @@ Route::get('/', [AuthController::class, 'login']);
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::get('/home', [HomeController::class, 'index'])->name('index');
+Route::get('/profile', [HomeController::class, 'profile'])->name('profile')->middleware('auth');
+Route::post('/profile/edit', [HomeController::class, 'profileEdit'])->name('profileEdit')->middleware('auth');
+
 
 Auth::routes();
 

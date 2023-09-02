@@ -77,18 +77,17 @@
             </ul>
         </div>
         <div class="d-flex align-items-center">
-            <div class="search-content">
+            <!-- <div class="search-content">
                 <input  class="search-input form-control form-input p-3" type="search" name="search" placeholder="Search here">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
                     <path d="M13.6409 12.1978L10.4277 8.93819C11.0804 7.87458 11.3621 6.62415 11.2285 5.38304C11.0948 4.14192 10.5535 2.98031 9.68929 2.08041C8.82512 1.18051 7.68707 0.593226 6.45355 0.410659C5.22004 0.228093 3.96088 0.460574 2.87358 1.07164C1.78627 1.68271 0.932213 2.63781 0.445554 3.78712C-0.0411053 4.93642 -0.132871 6.21494 0.184516 7.42213C0.501904 8.62933 1.21058 9.69691 2.19936 10.4574C3.18815 11.218 4.40111 11.6284 5.64803 11.6244C6.80267 11.6243 7.9288 11.2655 8.8711 10.5975L12.0442 13.8182C12.1484 13.9243 12.2727 14.0085 12.4098 14.066C12.5468 14.1235 12.694 14.1531 12.8426 14.1531C12.9912 14.1531 13.1383 14.1235 13.2754 14.066C13.4124 14.0085 13.5367 13.9243 13.6409 13.8182C13.8519 13.6014 13.97 13.3107 13.97 13.008C13.97 12.7053 13.8519 12.4146 13.6409 12.1978ZM5.64803 9.76834C4.88055 9.77964 4.127 9.56213 3.48336 9.14348C2.83971 8.72483 2.33501 8.12397 2.03346 7.41734C1.73191 6.71071 1.64717 5.93024 1.78996 5.17524C1.93275 4.42023 2.29662 3.72482 2.83533 3.17745C3.37404 2.63009 4.06325 2.25553 4.81522 2.10141C5.56718 1.9473 6.34798 2.0206 7.05821 2.31199C7.76845 2.60338 8.37595 3.09969 8.80362 3.73778C9.23129 4.37587 9.45972 5.1269 9.45981 5.89532C9.46513 6.91429 9.06706 7.89389 8.35268 8.61974C7.6383 9.34558 6.66583 9.75858 5.64803 9.76834Z" fill="white" />
                 </svg>
-            </div>
+            </div> -->
             <div class="user-profole ms-4 me-4"></div>
             <div class="dropdown">
-                <button class="btn dropdown-toggle profile-button p-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Hi John
-                </button>
+                <button class="btn dropdown-toggle profile-button p-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">{{ $user->name }}               </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                    <li><a class="dropdown-item" href="{{ route('profile') }}">Edit Profile</a></li>
                     <li>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
@@ -141,12 +140,12 @@
         <div class="section-container">
             <div class="row">
                 <div class="col-md-2">
-                    <div class="search-content">
+                    <!-- <div class="search-content">
                         <input id="searchGenre" oninput="searchGenre(this)" class="search-input form-control form-input p-2" type="search" name="search" placeholder="Search here" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
                             <path d="M13.6409 12.1978L10.4277 8.93819C11.0804 7.87458 11.3621 6.62415 11.2285 5.38304C11.0948 4.14192 10.5535 2.98031 9.68929 2.08041C8.82512 1.18051 7.68707 0.593226 6.45355 0.410659C5.22004 0.228093 3.96088 0.460574 2.87358 1.07164C1.78627 1.68271 0.932213 2.63781 0.445554 3.78712C-0.0411053 4.93642 -0.132871 6.21494 0.184516 7.42213C0.501904 8.62933 1.21058 9.69691 2.19936 10.4574C3.18815 11.218 4.40111 11.6284 5.64803 11.6244C6.80267 11.6243 7.9288 11.2655 8.8711 10.5975L12.0442 13.8182C12.1484 13.9243 12.2727 14.0085 12.4098 14.066C12.5468 14.1235 12.694 14.1531 12.8426 14.1531C12.9912 14.1531 13.1383 14.1235 13.2754 14.066C13.4124 14.0085 13.5367 13.9243 13.6409 13.8182C13.8519 13.6014 13.97 13.3107 13.97 13.008C13.97 12.7053 13.8519 12.4146 13.6409 12.1978ZM5.64803 9.76834C4.88055 9.77964 4.127 9.56213 3.48336 9.14348C2.83971 8.72483 2.33501 8.12397 2.03346 7.41734C1.73191 6.71071 1.64717 5.93024 1.78996 5.17524C1.93275 4.42023 2.29662 3.72482 2.83533 3.17745C3.37404 2.63009 4.06325 2.25553 4.81522 2.10141C5.56718 1.9473 6.34798 2.0206 7.05821 2.31199C7.76845 2.60338 8.37595 3.09969 8.80362 3.73778C9.23129 4.37587 9.45972 5.1269 9.45981 5.89532C9.46513 6.91429 9.06706 7.89389 8.35268 8.61974C7.6383 9.34558 6.66583 9.75858 5.64803 9.76834Z" fill="white" />
                         </svg>
-                    </div>
+                    </div> -->
                     <div class="d-flex align-items-start mt-3">
                         <div class="genreParent nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
